@@ -3,21 +3,30 @@
 
 (defn is-even? [n]
   (if (= n 0)
-    __
-    (___ (is-even? (dec n)))))
+    true
+    (= false (is-even? (dec n))))) ;; przysta liczba zaprzeczen
 
+;; loop dziala jak let tylko dla rekurenji ogonkowej!
 (defn is-even-bigint? [n]
   (loop [n   n
          acc true]
     (if (= n 0)
-      __
+      acc
       (recur (dec n) (not acc)))))
 
 (defn recursive-reverse [coll]
-  __)
+  (loop [n coll
+         acc '()]
+    (if (= 0 (count n))
+      acc
+      (recur (rest n) (cons (first n) acc)))))
 
 (defn factorial [n]
-  __)
+  (loop [n n
+         acc 1]
+    (if (= n 0)
+      acc
+      (recur (dec n) (* acc n)))))
 
 (meditations
   "Recursion ends with a base case"
